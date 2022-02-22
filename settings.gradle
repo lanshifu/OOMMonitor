@@ -1,0 +1,3 @@
+rootProject.name = "OOMMonitor"
+include ':app'
+include ':asm_plugin_library'
