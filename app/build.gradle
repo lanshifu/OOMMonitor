@@ -16,6 +16,32 @@ android {
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        ndk {
+            abiFilters 'armeabi-v7a'
+        }
+
+        externalNativeBuild {
+            cmake {
+                cFlags "-std=c11"
+                abiFilters 'armeabi-v7a'
+                //, 'armeabi','x86', 'x86_64'//ndk的版本不能超过17，要不编译不过
+            }
+            ndkBuild {
+                abiFilters 'armeabi-v7a'
+            }
+        }
+    }
+
+    externalNativeBuild {
+        cmake {
+            path "src/main/cpp/CMakeLists.txt"
+            version "3.10.2"
+        }
+    }
+    sourceSets {
+        main {
+            jniLibs.srcDirs = ['libs']
+        }
     }
 
     buildTypes {
